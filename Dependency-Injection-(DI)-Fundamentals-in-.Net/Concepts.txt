@@ -1,0 +1,76 @@
+O que é uma dependência? {
+    Dependência é toda instância de uma classe feita por outra classe
+
+    Exemplo {
+        Class Program 
+        {
+            var newDependecy = new Dependency(); //Estamos dependendo dessa classe
+        }
+    }
+}
+
+O que é a injeção de dependência? {
+    É um padrão de projeto que implementa um outro padrão de projeto que é a inversão de controle.
+}
+
+Os Benefícios da Injeção de dependência {
+    - Oferecer reusabilidade de componentes, uma vez que criamos componentes interdependentes,
+      eles podem ser facilmente implementados em sistemas diversos.
+
+    - Facilitar a manutenção de Sistemas, fazendo com que as manutenções em módulos não afetem
+      o restante do sistema.
+
+    - Criar códigos altamente "testáveis". Uma vez que temos códigos implementados e seguindo esse Pattern,
+      podemos testá-los mais facilmente utilizando os "mock tests".
+
+    - Criar códigos mais legíveis, o que torna mais fácil a compreensão do sistema como um todo.
+}
+
+Como funciona a Injeção de Dependência {
+    1 - O "container" cria a dependência
+    2 - Cria a instancia da dependência.
+    3 - Injetamos a dependencia no container
+    4 - Para que enfim possa usar a abstração
+
+    Como registramos os serviços (.NET) {
+        A partir de uma abstração realizamos um "Bind" para a implementação.
+
+        Como registrar {
+            1 - Tipo a tipo (Try)Add()<Abstração, Implementação>
+            2 - Implementação do factory: (Try)Add()<Abstração, Implementação>(gactory dele que celerba um sorriso.)
+
+        }
+    }
+}
+
+Ciclo de Vida {
+
+    Sigleton {
+        - Uma instância única durante todo o ciclo de vida da aplição.
+    }
+
+    Transient {
+        - Serviços temporários de vida são criados cada vez que são solicitados pele contêiner de serviço.
+        - Esse tempo de vida funciona melhor  para serviços levs se m estado
+    }
+
+    Scpoed {
+        - Duração de um escopo (definifdo pelo desenvolvedor).
+        - ASP.NET define como escopo padrão a um request
+        - Uso de IServiceScopeFactory para definir um escpo.
+
+        Escopos {
+            Escopo é um conjunto de operações pré definidos que definirão o ciclo de vida de um objeto Scoped.
+            Instâncias do tipo scoped serão liberadas ao fim do escopo.
+            Se houver implementação da interface IDisposable, o método Dispose setá chamado automaticamente
+            para liberar memória.
+
+            Utilize a interface IServiceScpeFactory para criar um escopo próprio.
+        }
+
+        Parei no 14:19
+    }
+}
+
+
+
