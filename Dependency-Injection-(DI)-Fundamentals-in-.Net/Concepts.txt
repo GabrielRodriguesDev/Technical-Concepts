@@ -47,17 +47,29 @@ Ciclo de Vida {
 
     Sigleton {
         - Uma instância única durante todo o ciclo de vida da aplição.
+        (Muito utilizado em configurações, pois quando tenho uma configuração de RabbitMQ por exemplo,
+            não preciso ficar recriando a mesma config, posso usar a mesma instancia criada.
+        )
     }
 
     Transient {
         - Serviços temporários de vida são criados cada vez que são solicitados pele contêiner de serviço.
-        - Esse tempo de vida funciona melhor  para serviços levs se m estado
+        - Esse tempo de vida funciona melhor para serviços leves sem estado.
+        (A Cada vez que o objeto for solicitado será criado uma nova instancia, então deve ter cuidado
+            ao usar devido ao estouro de memoria.
+        )
     }
 
     Scpoed {
         - Duração de um escopo (definifdo pelo desenvolvedor).
         - ASP.NET define como escopo padrão a um request
-        - Uso de IServiceScopeFactory para definir um escpo.
+        - Uso de IServiceScopeFactory para definir um escopo.
+
+        (O mesmo obejto será usado quando solicitado dentro do mesmo escopo.
+            O escopo padrão do ASP.net é criar um objeto na request e matar após a response,
+            isso diminui o risco de estouro de memória.
+        )
+
 
         Escopos {
             Escopo é um conjunto de operações pré definidos que definirão o ciclo de vida de um objeto Scoped.

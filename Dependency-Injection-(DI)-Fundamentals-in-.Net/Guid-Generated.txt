@@ -1,0 +1,24 @@
+Response {
+    First Request {
+        Singleton - b890302f-8846-4cab-97af-c4d0a973316e 
+        Transient - 79779635-76cb-4535-8c42-0218c8013aaa
+        Scoped - d7a652cd-b67e-41b3-b94d-bafb18c0d0a2
+    }
+    
+    Second Request {
+        Singleton - b890302f-8846-4cab-97af-c4d0a973316e
+        Transient - fb30196f-787a-4fd2-a788-8683a2d1e416
+        Scoped - 7ff33e94-d324-41b0-b7ed-ec616495f082
+    }
+
+    Third Request {
+        Singleton - b890302f-8846-4cab-97af-c4d0a973316e
+        Transient - 9d4e91cd-1e77-407e-95fe-4d2a17edb035
+        Scoped - df200db2-9623-4faf-9e3f-2ceaa6908e1c
+    }
+}
+
+
+
+
+
