@@ -1,0 +1,81 @@
+Comparativo entre Clean Architecture e DDD (Domain Driven Design) {
+    Pontos {
+        - DDD é algo *MUITO*, mais abrangente do que Clean Arch
+        
+        - Quando trabalhamos com patterns do DDD, muitas vezes nós podemos 
+        utilizá-los na Clean Arch
+    }
+
+    Elementos - DDD {
+        - Domínio - Coração da aplicação
+            - Agregados
+            - Entidade {
+                Entidade = Identidade: Algo único que possui um ID. (Orientação a objetos)
+                    Armazena estado e trabalha com comportamento
+                
+                Entidades anêmicas = Entidades que não possui regras de negócio
+                    ou comportamento e apenas armazena estado.
+
+                Entidades ricas = Entidade que possuem comportamento baseado nas regras de 
+                    negócio da aplicação.
+            }
+            - Value Objects
+
+        - Serviços de Domínio {
+            Domain Service = Regras de negócio complexas que utiliza 2 ou mais entidades.
+        }
+
+        - Camada de aplicação - Application Service {
+            Orquestra um fluxo: 
+                -Instancia uma entidade com dados, chama um repositório e salva os dado.
+                - Envia um e-mail sobre o salvamento dos dados.
+            Normalmente estamos acostumados a reutilizar os "services de aplicação"
+            Exemplo {
+                Temos um arquivo UserService que contém vários métodos, e dentro desses métodos
+                eles fazem referencia a outros métodos, causando reuso deles.
+            }
+        }
+    }
+
+    Elementos - Clean Arch {
+        - Entidade {
+            Entidade = Consolida regras de negócio.(Pode ser em qualquer paradgma, o Uncle Bob não espescificou)
+        }
+        - UseCases {
+            Orquestra um fluxo: Resolve uma intenção completa exigida pelo usuário.
+                Pelo fato de ele resolver uma inteção completa, não há reuso sobre os Serviços
+                Exemplo {
+                    Tenho um fluxo CreateUser, e agora preciso criar o SuperCreateUser
+                    ambos possuem linhas muito parecidas porém uma não reutilza a outra.
+                }
+            Um UseCase *NUNCA* chama o outro, eles são completos sobre seu ciclo, resolvem o seu problema.
+            Porém ainda acessa entidades, repositórios, disparam eventos.
+        }
+        - Gateways
+        - External Interfaces...
+    }
+
+    Comparativo de elementos {
+        Entidade {
+            Entidades no DDD e no Clean Arch são considerados "Enterprise Business Rule".
+            Domain Service (DDD) também é considerado uma "Enterprise Business Rule".
+
+            Logo podemos dizer que uma Entidade Clea Arch equivale a: 
+                "Entidade no DDD" + "Domain Service (DDD)"
+        }
+
+        Application Service {
+            Application Service (DDD) são parecidos (não completamente) com os UseCases (Clean Arch)
+                Estão na camada de aplicação, não estão no baixo nivel implementando as
+                regras de negócio, eles orquestram fluxos.
+
+                Porém o UseCases (Clean Arch) trata de um fluxo que não pode ser reutilzados por outros fluxos.
+                Já a Application Service (DDD) é reutilzavel
+        }
+    }
+
+
+    Referencia {
+        Link: https://www.youtube.com/watch?v=3qgnmkLTXVs
+    }
+}
